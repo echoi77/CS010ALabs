@@ -1,0 +1,52 @@
+/* Write a program that takes P, V, and n as inputs, and outputs T, for carbon dioxide for which a = 3.59 and b = 0.0427. You'll of course first need to rewrite the equation to solve for T, using simple algebra; don't try to simplify the equation though. All variables should be float. (Don't try to convert units. Assume inputs are positive.).
+
+If the input is: 100 10 1
+the output is:
+
+119.808
+*/
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+   double varPressure;
+   double varVolume;
+   double varNumMoles;
+
+   double a;
+   double b; 
+
+   double idealGasConst;
+   double finalTemperature;
+
+   double term1;
+   double term2;
+   double term3;
+
+   a = 3.59;
+   b = 0.0427;
+   idealGasConst = 8.314;
+
+
+   cin >> varPressure;
+   cin >> varVolume;
+   cin >> varNumMoles;
+   
+   term1 = varPressure + (a * (varNumMoles * varNumMoles) / (varVolume * varVolume));
+   // gets first term of the rearranged equation
+
+   term2 = ((varVolume) - (varNumMoles * b));
+   // gets second term of the rearranged equation
+
+   term3 = varNumMoles * idealGasConst;
+   // gets denominator of the rearranged equation
+
+   finalTemperature = (term1 * term2) / (term3);
+   cout << finalTemperature << endl;
+   // outputs the final temperature using the three terms
+
+   return 0;
+}
